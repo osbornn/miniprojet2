@@ -32,6 +32,7 @@ def publication(id):
 
     for i in range (int(start), int(start) + int(count)):
         modifiedList.append(testList[i])
+
     return modifiedList
 
 @route('/publication')
@@ -57,7 +58,7 @@ def publication():
                 testList.append(article.tag + ": " + str(article.text) + " ")
 
     if(int(count) > len(testList)):
-        count = len(testList)
+        count = len(testList) #si le paramètre count est trop grand par rapport à la liste, count devient la longueur de la liste
 
     for i in range (int(start), int(start) + int(count)):
         modifiedList.append(testList[i])
@@ -108,7 +109,7 @@ def author(name):
 
     for i in range (int(start), int(start) + int(count)):
         modifiedList.append(testList[i])
-    return modifiedList
+    return sorted(modifiedList)
 
 @route('/authors/<name>/coauthors')
 def author(name):
@@ -137,7 +138,7 @@ def author(name):
     for i in range (int(start), int(start) + int(count)):
         modifiedList.append(testList[i])
 
-    return "Coauthors : " + str(modifiedList)
+    return "Coauthors : " + str(sorted(modifiedList))
 
 @route('/search/authors/<searchString>')
 def author(searchString):
